@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Country as ICountry } from '../../../interfaces/country.interface';
 import Layout from '../../components/Layout/Layout';
-import styles from './country.module.css';
+import styles from './Country.module.css';
 
 const getCountry = async (code: string): Promise<ICountry> => {
   const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`);
