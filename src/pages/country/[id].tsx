@@ -1,5 +1,4 @@
-import { styled } from '@material-ui/core';
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Country as ICountry } from '../../../interfaces/country.interface';
@@ -115,9 +114,24 @@ const Country: React.FC<CountryProps> = ({ country }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await fetch('https://restcountries.eu/rest/v2/all');
+  const countries: ICountry[] = await res.json();
+
+  const paths = countries.map((country) => ({
+    params: {
+      id: country.alpha3Code,
+    },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({
   params,
-}: GetServerSidePropsContext) => {
+}: GetStaticPropsContext) => {
   const country = await getCountry(params.id as string);
   return {
     props: {
