@@ -1,0 +1,37 @@
+.container {
+  padding: 25px;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  font-size: 0.75rem;
+  margin-bottom: 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 20px;
+}
+
+.heart {
+  color: brown;
+  font-size: 1rem;
+}
+
+.themeBtn {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: var(--text-color-secondary);
+  cursor: pointer;
+  outline: none;
+}
